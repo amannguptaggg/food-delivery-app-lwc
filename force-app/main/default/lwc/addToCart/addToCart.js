@@ -2,6 +2,9 @@ import { api, LightningElement, track, wire } from 'lwc';
 import pizzaImg from '@salesforce/resourceUrl/pizzaImg';
 import cartItem from '@salesforce/apex/JubilantFoodWorks.getCartItem';
 import deleteCartItem from '@salesforce/apex/JubilantFoodWorks.deleteCartItem';
+import deleteAllCart from '@salesforce/apex/JubilantFoodWorks.deleteAllCartItems';
+
+
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import { refreshApex } from '@salesforce/apex';
 
@@ -17,13 +20,15 @@ export default class AddToCart extends LightningElement {
   @track addItemToCart;
   @track customerId;
   @api _cartData;
-  @track totalCartSize; 
+  @track totalCartSize;
+  @track cartHaveItem;
   
 
     connectedCallback(){
         this.pizzaImg = pizzaImg;
         this.customerId = 'a035h00000KgYbJAAV';
         this.totalCartSize = 0;
+        this.cartHaveItem = false;
     }
 
     @wire(cartItem,{customerId : '$customerId'})
@@ -35,6 +40,12 @@ export default class AddToCart extends LightningElement {
             this.cartItems = data;
             this.totalCartSize = data.length;
             
+            if(this.totalCartSize > 0){
+                this.cartHaveItem = true;
+            }else{
+                this.cartHaveItem = false;
+            }
+
             //  event for total size 
             const evt = new CustomEvent('cartsize', {
                 detail : this.totalCartSize
@@ -52,6 +63,7 @@ export default class AddToCart extends LightningElement {
         if(this._cartData){
         console.log('refresh method from parent called');
         refreshApex(this._cartData);
+
         }
     }
 
@@ -91,12 +103,51 @@ export default class AddToCart extends LightningElement {
                });
                
                this.dispatchEvent(event);
-            }
-        })
+                }
+            })
+        }
+
     }
 
 
-    }
+
+       //delete all cart items
+        deleteAllCartItems(event) {
+            deleteAllCart({customerId: this.customerId})
+            .then(result=>{
+                console.log('deleted-> result -> ' + result);
+                if(result){
+                    const event = new ShowToastEvent({
+                        title : 'Your Cart is Empty',
+                        variant: 'warning',
+                        mode: 'dismissable'
+                   });
+                   this.dispatchEvent(event);
+                   refreshApex(this._cartData);
+                   this.cartHaveItem = false;
+                   console.log('refreshed');
+                } else{
+                    const event = new ShowToastEvent({
+                        title : 'Some Error in Removing Item',
+                        variant: 'error',
+                        mode: 'dismissable'
+                   });
+                   this.dispatchEvent(event);
+                    }
+                })
+        }
+
+
+        addSomeProduct(){
+            const evt = new CustomEvent('addprod',{
+                detail : 'true'
+            });
+
+            this.dispatchEvent(evt);
+        }
+
+
+  
 
 
     // close model

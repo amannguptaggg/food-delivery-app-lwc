@@ -1,0 +1,32 @@
+<template>
+    <div class="cOrdersBox">
+        <div class="cOrdersHeader">
+            <h1>Order History</h1>
+            <p>Total Orderes : 10</p>
+        </div>
+
+        <template if:true={customerHaveOrders}>
+            <div class="cOrdersTable">
+                <!-- Orders  datatable  -->
+                    <lightning-datatable
+                            key-field="id"
+                            columns={ordersColumn}
+                            data={allCOrders}
+                            hide-checkbox-column
+                            default-sort-direction={defaultSortDirection}
+                            sorted-direction={sortDirection}
+                            sorted-by={sortedBy}
+                            onsort={onHandleSort}>
+                    </lightning-datatable>
+                <!-- orders datatables end -->
+
+            </div>
+        </template>
+        <template if:false={customerHaveOrders}>
+            <div class="emptyOrderMessage">
+                <h1>You don't have Orders</h1>
+                <a href="#" onclick={orderSomeProduct}>Order Delicious Foods --> </a>
+            </div>
+        </template>
+    </div>
+</template>

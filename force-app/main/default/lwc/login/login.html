@@ -1,0 +1,49 @@
+<template>
+    <div class="loginBox">
+        <template if:true={openLogin}>
+            <!-- popup start -->
+
+            <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content"
+                aria-modal="true" class="slds-modal slds-fade-in-open slds-modal_medium">
+                <div class="slds-modal__container">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                        <lightning-icon icon-name="utility:close" onclick={cancleLoginPopup}></lightning-icon>
+                        <span class="slds-assistive-text" onclick={cancleLoginPopup}>Close</span>
+                    </button>
+                    <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless"
+                        id="modal-content-id-1">
+                        <div class="loginBox">
+                            <div class="loginInnerBox">
+                                <div class="login">
+                                    <h1>Login</h1>
+                                    <template if:true={errorIdPass}>
+                                        <span class="userLoginError">Incorrect Email or Password</span>
+                                    </template>
+                                    <div class="loginInput">
+                                        <div class="lgc-bg">
+                                            <lightning-input type="text" label="Email address/Phone"
+                                                placeholder="enter email..." required onchange={chnageEmail} onfocus={focusFunction}></lightning-input>
+                                        </div>
+
+                                        <div class="lgc-bg">
+                                            <lightning-input type="password" label="Password"
+                                                placeholder="enter password..." required onchange={chnagePassword} onfocus={focusFunction} ></lightning-input>
+                                        </div>
+
+                                        <div class="loginBtn" >
+                                            <button type="submit" onclick={loginUserFunction}>Login</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open slds-c-backdrop-color-background" style="opacity: 0.5"
+                role="presentation"></div>
+
+            <!-- popup ends -->
+        </template>
+    </div>
+</template>

@@ -6,26 +6,38 @@ import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 
 export default class FoodDeliveryHome extends LightningElement {
 
+    //  layouts
+    @track foodItemsLayout;
+    @track cartItemLayout;
+    @track cOrdersLayout;
+
+    // food items and carts
     @track allFoodItemsList;
     @track pizzaImg;
     @api isPopupOpen;
     @track itemData;
-    @track foodItemsLayout;
     @track navData;
     @track cartItem;
-    @track cartItemLayout;
     @track addToCartItemId;
     @track customerId;
     @track totalCartSize;
     @track itemIdfrompopup;
+    @track userLoggedIn;
+    @track openLogin;
+
 
     connectedCallback(){
         this.pizzaImg = pizzaImg;
-        this.foodItemsLayout = false;
-        this.cartItemLayout = true;
+        this.foodItemsLayout = true;
+        this.cartItemLayout = false;
+        this.cOrdersLayout = false;
+        this.openLogin = true;
+
         this.addToCartItemId = 'a055h00000ERSaMAAX';
         this.customerId = 'a035h00000KgYbJAAV';
         this.totalCartSize = 0;
+        this.userLoggedIn = false;
+
     }
 
     // get all food items list
@@ -72,12 +84,29 @@ export default class FoodDeliveryHome extends LightningElement {
         if(this.navData == 'foodMenu'){
             this.foodItemsLayout = true;
             this.cartItemLayout = false;
+            this.cOrdersLayout = false;
         }
 
         if(this.navData == 'cart'){
             this.foodItemsLayout = false;
             this.cartItemLayout = true;
+            this.cOrdersLayout = false;
         }
+
+        if(this.navData == 'customerOrders'){
+            this.foodItemsLayout = false;
+            this.cartItemLayout = false;
+            this.cOrdersLayout = true;
+        }
+
+        if(this.navData == 'login'){
+            this.openLogin = true;
+        }
+    }
+
+    openProd(){
+        this.foodItemsLayout = true;
+        this.cartItemLayout = false;
     }
 
 
@@ -127,6 +156,20 @@ export default class FoodDeliveryHome extends LightningElement {
     addToCartFromPopup(event){
         this.itemIdfrompopup = event.detail;
         console.log('id got from popup ' + this.itemIdfrompopup);
+    }
+
+
+    closeLoginPopup(){
+        this.openLogin = false;
+    }
+
+
+    loggedInFun(event){
+        let data = event.detail;
+        console.log('event rec data ---> ' + data[0].Id);
+
+        this.userLoggedIn = true;
+        this.openLogin = false;
     }
 
 }

@@ -1,0 +1,63 @@
+.loginBox{
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.loginInnerBox{
+    position: inherit;
+    margin: 20px;
+}
+
+.login{
+    position: relative;
+    width: 100%;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-direction: column;
+    font-size: 18px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(201, 201, 201);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+    border-radius: 0.25rem;
+}
+
+.login h1{
+    font-size: 30px;
+}
+
+.login .loginInput .loginBtn{
+position: relative;
+width: 100%;
+
+}
+
+.login .loginInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-direction: column;
+    font-size: 18px;
+}
+
+.login .loginInput .loginBtn button{
+    display: block;
+    width: 100%;
+    background-color: #45a84a;
+    color: #fff;
+}
+
+.userLoginError{
+    font-size: 14px;
+    color: red;
+}
+
