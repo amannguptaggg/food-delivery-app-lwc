@@ -1,0 +1,56 @@
+
+.sidePannel {
+    min-height: 500px !important;
+}
+
+.navigation{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+.navigation .navItem {
+    padding: 5px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 1s;
+}
+
+.navigation .navItem:hover {
+    background-color: #eceff1;
+    padding-left: 10px;
+    text-decoration: none;
+}
+
+
+.navigation .navItem a{
+    color: black;
+    font-size: 18px;
+}
+
+/* main pannel */
+
+.mainHeading{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+}
+
+.mainHeading h1{
+    font-size: 30px;
+    font-weight: 600;
+    color: #002f6c;
+}
+
+.content{
+    padding: 10px;
+}
+
+.tabMaxHeight{
+    position: relative;
+    max-height: 400px;
+    overflow-y: auto;
+}

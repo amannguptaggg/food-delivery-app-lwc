@@ -1,0 +1,110 @@
+<template>
+  <div class="donationForm">
+
+
+
+    <lightning-layout horizontal-align="center" multiple-rows="true">
+      <lightning-layout-item size="6">
+
+        <p class="slds-p-horizontal_small">
+          <lightning-input type="text" label="Name" value={insertDonationRecord.Name} onchange={nameChnaged}>
+          </lightning-input>
+        </p>
+
+        <p class="slds-p-horizontal_small">
+          <lightning-input type="text" label="Total_Donation_Amount__c"
+            value={insertDonationRecord.Total_Donation_Amount__c} onchange={totalAmt}></lightning-input>
+        </p>
+
+        <p class="slds-p-horizontal_small">
+            <lightning-input type="date" name="closeDate" label="Donation End Date" value="2020-09-07" onchange={closeDateMethod}></lightning-input>
+        </p>
+
+
+      </lightning-layout-item>
+      <lightning-layout-item size="6">
+
+        <!--  payment Freq -->
+        <div class="slds-p-horizontal_small">
+          <div class="slds-form-element">
+            <label class="slds-form-element__label" for="select-02">Payment Frequency</label>
+            <div class="slds-form-element__control">
+              <div class="slds-select_container">
+                <select class="slds-select" id="select-02" onchange={payfreq}>
+                  <option value="">Select</option>
+                  <option>One-time</option>
+                  <option>Quarterly</option>
+                  <option>Half-yearly</option>
+                  <option>Monthly</option>
+                  <!-- <template for:each={insertDonationRecord.Payment_Frequency__c} for:item="payF">
+                    <option key={payF}>{payF}</option>
+                  </template> -->
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- remove remv -->
+        <p class="slds-p-horizontal_small">
+          <lightning-input type="text" label="Accound ID"
+            value={insertDonationRecord.Total_Donation_Amount__c} onchange={AccountIdMethod}></lightning-input>
+        </p>
+
+        <p class="slds-p-horizontal_small">
+          <lightning-input type="text" label="Doner ID"
+            value={insertDonationRecord.Total_Donation_Amount__c} onchange={donerIdMehtod}></lightning-input>
+        </p>
+
+        <!-- remove -->
+
+        <!-- Donation year -->
+
+        <div class="slds-p-horizontal_small">
+          <div class="slds-form-element">
+            <label class="slds-form-element__label" for="select-03">Payment Year</label>
+            <div class="slds-form-element__control">
+              <div class="slds-select_container">
+                <select class="slds-select" id="select-03" onchange={totalYear}>
+                  <option value="">For Year</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <!-- <template for:each={insertDonationRecord.Payment_Frequency__c} for:item="payF">
+                            <option key={payF}>{payF}</option>
+                          </template> -->
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Select NGO (Account) -->
+        <div class="slds-p-horizontal_small">
+          <div class="slds-form-element">
+            <label class="slds-form-element__label" for="select-01">Select Label</label>
+            <div class="slds-form-element__control">
+              <div class="slds-select_container">
+                <select class="slds-select" id="select-01">
+                  <option value="">Select NGO</option>
+                  <option>Goonj Foundation</option>
+                  <option>Smile Foundation</option>
+                  <option>PoveryFight Foundation</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </lightning-layout-item>
+      <lightning-layout-item size="12" class="slds-p-top_medium btnDonate">
+        <lightning-button variant="brand" label="Donate" title="Donate with good heart" icon-name="standard:proposition"
+          class="slds-m-left_xx-small" onclick={submitDonationForm}></lightning-button>
+      </lightning-layout-item>
+    </lightning-layout>
+  </div>
+
+</template>

@@ -1,0 +1,85 @@
+<template>
+    <div class="mainLayout">
+        <div class="mainNavigation">
+            <div class="mainHead">
+                <h1>Jubilant FoodWorks</h1>
+                <div onclick={navHandler} id="cartt" data-nav="cart" class="cartIcon">
+                    <span>{totalCartSize}</span>
+                   <a href="#">
+                    <lightning-icon icon-name="standard:webcart"></lightning-icon>
+                   </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contentLayout">
+
+            <!-- Side Menu -->
+            <div class="leftSidebar">
+                <div class="navBox">
+                    <div class="NavItem" onclick={navHandler} data-nav="foodMenu"><a href="#"> Food Menu </a></div>
+                    <div class="NavItem"><a href="#"> Orders </a></div>
+                    <div class="NavItem"><a href="#"> Customers </a></div>
+                    <div class="NavItem"><a href="#"> Delivery Persons </a></div>
+                </div>
+            </div>
+            
+            <!--  main content -->
+            <div class="rightSidebar">
+
+                <template if:true={foodItemsLayout}>
+
+                  <!--  Food Items  -->
+                <div class="itemCard">
+                <template for:each={allFoodItemsList} for:item="item">
+
+                        <div class="card" key={item.Id}>
+                            <!-- card body -->
+                            <div class="cardBody">
+                                <div class="cardImg">
+                                    <img src={pizzaImg} alt="pizza">
+                                </div>
+                                <div class="cardContent">
+                                    <div class="title">
+                                        {item.Food_Name__c}
+                                    </div>
+                                    <div class="price">
+                                        <p class="outer">
+                                            <span class="inner">${item.Unit_Price__c}</span>
+                                        </p>
+                                        <p>${item.Discounted_Price__c}</p>
+                                        <p><span>
+                                            %{item.Discount_Percentage__c} Off
+                                        </span></p>
+                                    </div>
+                                    <div class="meta">
+                                        <button class="btn">
+                                            <lightning-icon icon-name="standard:webcart" onclick={addToCartItem} data-itemid={item.Id}></lightning-icon>
+                                        </button>
+                                        <a onclick={showDetailsFn} data-id={item.Id}>View
+                                        
+                                    </a>
+                                    <c-view-item-details show-details={isPopupOpen} onmclose={closeModel} items = {itemData} onaddcartfrompopup = {addToCartFromPopup}></c-view-item-details>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end card body -->
+
+                        </div>
+
+                </template>
+            </div>
+        </template>
+        <template if:true={cartItemLayout}>
+            <c-add-to-cart add-cart-item = {addToCartItemId} oncartsize={totalCartSizeFn}></c-add-to-cart>
+        </template>
+            </div>
+        </div>
+        <!--  Food Items End -->
+
+
+        <span class="crt">
+            <c-add-to-cart add-cart-item = {addToCartItemId} oncartsize={totalCartSizeFn}></c-add-to-cart>
+        </span>
+    </div>
+</template>

@@ -1,0 +1,20 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForAllPageTypes,force:appHostable" access="global">
+
+
+<aura:attribute name="url" type="Boolean" default="optionalDefault" />
+
+
+<section class="mainHomeBox">
+    <div class="mainHeadingBox">
+        <div class="heading">
+            <h1>Donation System</h1>
+        </div>
+        <div class="navigationMenu">
+            <span><a href="#">Home</a></span>
+            <span><a href="#" onclick="{!c.gotoDashboard}">Dashboard</a></span>
+            <span><a href="#">Donations</a></span>
+        </div>
+    </div>  
+</section>
+ 
+</aura:component>

@@ -1,0 +1,101 @@
+
+
+.popupContent{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.popupContent .popImg{
+    position: inherit;
+}
+
+.popupContent .popImg img{
+    position: inherit;
+    max-width: 450px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+}
+
+.popContent{
+    position: relative;
+    padding: 0px 20px; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.popContent>p{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.popContent .popPrice{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 30px;
+    gap: 12px;
+}
+
+    
+.popContent .popPrice .outer{
+    color: #424242;
+}
+
+.popContent .popPrice .inner{
+    color: red;
+    text-decoration: line-through;
+}
+
+.popContent .popPrice p:nth-child(1){
+    text-decoration: line-through;
+}
+
+.popContent .popPrice p:nth-child(2){
+    font-weight: 600;
+}
+
+.popContent .popPrice p:nth-child(3){
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #00600f;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popContent .popPrice p:nth-child(3) span{
+    font-size: 10px; 
+    padding: 1px;
+}
+
+.popMeta{
+    position: relative;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 20px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    font-size: 14px;
+}
+
+.popMeta p span{
+    color: red;
+    margin-right: 5px;
+}
+
+.popItemDescription{
+    margin-top: 5px;
+    font-size: 14px;
+    padding: 20px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+

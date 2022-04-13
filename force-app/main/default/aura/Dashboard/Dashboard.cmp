@@ -1,0 +1,6 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForAllPageTypes,force:appHostable" access="global">
+
+
+<h2>Dashboard</h2>
+
+</aura:component>

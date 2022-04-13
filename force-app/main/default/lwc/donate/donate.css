@@ -1,0 +1,13 @@
+.donationForm{
+    position: relative;
+    padding: 10px 50px;    
+}
+
+.btnDonate{
+    position: relative;
+    width: 100%;
+}
+
+.remv{
+    display: none;
+}

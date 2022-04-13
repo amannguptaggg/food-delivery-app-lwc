@@ -1,0 +1,209 @@
+<template>
+    <lightning-layout horizontal-align="center" multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="2" class="sidePannel">
+
+            <lightning-card variant="Narrow" title="Pages" icon-name="standard:account">
+                <span class="sideNav">
+                    <div class="navigation">
+                        <span class="navItem"> <a href="#" data-target-id="home" onclick={handleNavigation}>Home</a>
+                        </span>
+                        <span class="navItem"> <a href="#" data-target-id="donate" onclick={handleNavigation}>Donate</a>
+                        </span>
+                        <span class="navItem"> <a href="#" data-target-id="donation"
+                                onclick={handleNavigation}>Donations</a> </span>
+                        <span class="navItem"> <a href="#" data-target-id="profile"
+                                onclick={handleNavigation}>Profile</a> </span>
+                    </div>
+                </span>
+            </lightning-card>
+
+
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="10">
+
+            <!-- // home -->
+            <template if:true={home}>
+                <lightning-card variant="Narrow">
+                    <section class="mainHeading">
+                        <h1>DonateTrunk</h1>
+                    </section>
+
+                    <section class="content">
+                        <p>
+                            What is Lorem Ipsum?
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including
+                            versions of Lorem Ipsum.
+                        </p>
+                    </section>
+
+
+                </lightning-card>
+            </template>
+
+
+
+            <!-- // donate -->
+            <template if:true={donate}>
+                <lightning-card variant="Narrow">
+                    <section class="mainHeading">
+                        <h1>Donate</h1>
+                    </section>
+
+                    <section class="content">
+
+                        <div>
+                            <p>
+                                <c-donate></c-donate>
+                            </p>
+                        </div>
+                    </section>
+
+
+                </lightning-card>
+            </template>
+
+
+            <!-- // donate -->
+            <template if:true={donation}>
+                <lightning-card variant="Narrow">
+                    <section class="mainHeading">
+                        <h1>Donations</h1>
+                    </section>
+
+                    <section class="content">
+                        <!-- donations table -->
+                        <div class="tabMaxHeight">
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Donation Name">Donation Name</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Donation Amount">Donation Amount</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Due Date">Due Date</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Status">Status</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="DonID">Donation ID</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    <template for:each={donationList} for:item="donItem">
+
+
+                                        <tr class="slds-hint-parent" key={donItem.id}>
+                                            <th data-label="Donation Name" scope="row">
+                                                <div class="slds-truncate" title={donItem.Name}>
+                                                    <a href="#">{donItem.Name}</a>
+                                                </div>
+                                            </th>
+                                            <!-- TotalPrice -->
+                                            <td data-label="Amount">
+                                                <div class="slds-truncate" title="Donation Amount">${donItem.TotalPrice}
+                                                </div>
+                                            </td>
+
+                                            <td data-label="Due Date">
+                                                <div class="slds-truncate" title="Due Date">${donItem.ServiceDate}</div>
+                                            </td>
+                                            <td data-label="Status">
+                                                <div class="slds-truncate" title="Due Date">
+                                                    {donItem.Installment_Status__c}</div>
+                                            </td>
+                                            <!-- Product2Id -->
+                                            <td data-label="Product2ID">
+                                                <div class="slds-truncate" title="Product ID">{donItem.Product2Id}</div>
+                                            </td>
+                                        </tr>
+
+                                    </template>
+                                </tbody>
+                            </table>
+                            <!--  table end -->
+                        </div>
+                    </section>
+
+                </lightning-card>
+            </template>
+ 
+
+
+            <!-- // donate -->
+            <template if:true={profile}>
+                <lightning-card variant="Narrow">
+                    <section class="mainHeading">
+                        <h1>Profile</h1>
+                    </section>
+
+                    <section class="content">
+                        <div>
+                        </div>
+                    </section>
+
+
+                </lightning-card>
+            </template>
+
+        </lightning-layout-item>
+        <lightning-layout-item size="12">
+        
+                <lightning-button variant="brand" value="Click me" ></lightning-button>
+      
+        </lightning-layout-item>
+    </lightning-layout>
+
+
+
+    <!-- Model Form -->
+
+<template if:true={isModelOpen}>
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_large"
+        aria-labelledby="modal-heading-01" aria-modal="true">
+        <div class="slds-modal__container">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Cancel and close</span>
+            </button>
+            <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h1>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat
+                    veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit
+                    officia tempor esse quis. Cillum sunt ad dolore quis
+                    aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor
+                    adipisicing.</p>
+                <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim
+                    laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur
+                    proident. Eiusmod et adipisicing culpa deserunt nostrud
+                    ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco
+                    mollit enim excepteur ea.</p>
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={cancleModel}>Cancel</button>
+                <button class="slds-button slds-button_brand" onclick={loginSubmit}>Save</button>
+            </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>
+
+    <!-- Model Form End -->
+
+
+</template>

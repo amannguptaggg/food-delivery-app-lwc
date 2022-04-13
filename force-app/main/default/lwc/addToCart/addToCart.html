@@ -1,0 +1,50 @@
+<template>
+    <div class="cartBox">
+        <div class="cartHeader">
+            <h1>Cart</h1>
+            <p>Total Item : {totalCartSize}</p>
+        </div>
+        <div class="cartContent">
+
+            <template for:each={cartItems} for:item="cartI">
+
+            <div class="cartCard" key={cartI.id}>
+                <!-- card body -->
+                <div class="cardBody">
+                    <div class="cardImg">
+                        <img src={pizzaImg} alt="pizza">
+                    </div>
+                    <div class="cardContent">
+                        <div class="outerContent">
+                            <div class="title">
+                                {cartI.Food_Item__r.Food_Name__c}
+                            </div>
+                            <div class="price">
+                                <p class="outer">
+                                    <span class="inner">${cartI.Food_Item__r.Unit_Price__c}</span>
+                                </p>
+                                <p>${cartI.Food_Item__r.Discounted_Price__c}</p>
+                            </div>
+                        </div>
+                        <div class="description">
+                            <p>
+                                {cartI.Food_Item__r.Description__c}
+                            </p>
+                        </div>
+                        <div class="meta">
+                            <a href="#" onclick={removeCartItem} data-delid={cartI.Id}>
+                                <lightning-icon icon-name="utility:delete" size="x-small" variant="error"></lightning-icon> Delete
+                            </a>
+                            <a href="#" onclick={viewProductFun} data-itemid={cartI.Food_Item__c}> View Product </a>
+                        </div>
+                    </div>
+                    <!-- end card body -->
+                    <span>
+                         <c-view-item-details show-details={isPopupOpen} onmclose={closeModel} items = {itemData}></c-view-item-details>
+                    </span>
+                </div>
+            </div>
+        </template>
+        </div>
+    </div>
+</template>

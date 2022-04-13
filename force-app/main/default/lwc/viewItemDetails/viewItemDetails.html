@@ -1,0 +1,56 @@
+<template>
+    <div>
+        <template if:true={showDetails}>
+            <!-- popup start -->
+
+
+            <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content"
+                aria-modal="true" class="slds-modal slds-fade-in-open slds-modal_medium">
+                <div class="slds-modal__container">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="false">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text" onclick={canclePopup}>Close</span>
+                    </button>
+                    <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless"
+                        id="modal-content-id-1">
+                        <div class="popupContent">
+                            <div class="popImg">
+                                <img src={pizzaImg}>
+                            </div>
+                            <div class="popContent">
+                                <p>{singleFoodItem.Food_Name__c}</p>
+
+                                <div class="popPrice">
+                                    <p class="outer">
+                                        <span class="inner">${singleFoodItem.Unit_Price__c}</span>
+                                    </p>
+                                    <p>${singleFoodItem.Discounted_Price__c}</p>
+                                    <p><span>
+                                        %{singleFoodItem.Discount_Percentage__c} Off
+                                    </span></p>
+                                </div>
+                                <div class="popMeta">
+                                    <p><span>Category : </span> {singleFoodItem.Food_Category__c}</p>
+                                    <p><span>Type : </span>{singleFoodItem.Veg_Non_Veg__c}</p>
+                                </div>
+
+                                <div class="popItemDescription">
+                                    {singleFoodItem.Description__c}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" aria-label="Cancel" onclick={canclePopup} >Cancel</button>
+                        <button class="slds-button slds-button_brand" onclick={addToCartFromPopup} data-itemid={singleFoodItem.Id}>Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open slds-c-backdrop-color-background" style="opacity: 0.2;" role="presentation"></div>
+
+            <!-- popup ends -->
+        </template>
+    </div>
+</template>
