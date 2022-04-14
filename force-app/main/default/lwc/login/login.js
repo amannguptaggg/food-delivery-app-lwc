@@ -17,6 +17,8 @@ export default class Login extends LightningElement {
     @track userEmail;
     @track userPass;
     @track errorIdPass;
+    @track signupBoxLayout;
+    @track loginBoxLayout;
 
     @track loginData = {
         Email__c : '',
@@ -25,6 +27,8 @@ export default class Login extends LightningElement {
 
     connectedCallback(){
         this.errorIdPass = false;
+        this.loginBoxLayout = true;
+        this.signupBoxLayout = false;
     }
     // cancle login popup 
     cancleLoginPopup(){
@@ -89,6 +93,23 @@ export default class Login extends LightningElement {
             console.log('Error in user login -> ' + JSON.stringify(error));
         }
     }
+
+
+    loginSignupLayoutFun(event){
+
+        const eve = event.currentTarget.dataset.acc;
+
+        if(eve === 'createAccount'){
+            this.loginBoxLayout = false;
+            this.signupBoxLayout = true;
+        }
+
+        if(eve === 'loginAccount'){
+            this.signupBoxLayout = false;
+            this.loginBoxLayout = true;
+        }
+    }
+
 
 
     focusFunction(event){

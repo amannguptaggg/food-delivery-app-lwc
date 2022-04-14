@@ -1,11 +1,11 @@
 .loginBox{
     position: relative;
     width: 100%;
-    min-height: 450px;
+    min-height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px;
+    padding: 11px;
 }
 
 .loginInnerBox{
@@ -13,10 +13,15 @@
     margin: 20px;
 }
 
+.loginInnerBox2{
+    position: inherit;
+    margin: -10px;
+}
+
 .login{
     position: relative;
     width: 100%;
-    padding: 10px 10px;
+    padding: 14px 24px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +32,7 @@
     border-style: solid;
     border-color: rgb(201, 201, 201);
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10);
-    border-radius: 0.25rem;
+    border-radius: 0.57rem;
 }
 
 .login h1{
@@ -44,20 +49,344 @@ width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 7px;
     flex-direction: column;
     font-size: 18px;
+    padding: 20px 20px;
+    padding: 2px 7px;
 }
+
+.login .loginInput:focus{
+    outline: none;
+}
+
 
 .login .loginInput .loginBtn button{
     display: block;
     width: 100%;
     background-color: #45a84a;
     color: #fff;
+    outline: none;
+    border-radius: 4px;
+    border: none;
 }
+
+.login .loginInput .loginBtn button:hover{
+    background-color: #226225;
+}
+
 
 .userLoginError{
     font-size: 14px;
     color: red;
 }
 
+
+/*  singup  */
+
+.signupLinkBox{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.signupLinkBox span:nth-child(2){
+    position: relative;
+    height: 100%;
+    width: 5px;
+    color: #e91e63;
+    margin: 0px 4px;
+}
+
+
+
+
+
+
+
+
+
+.colorfulBubble{
+    border-radius: 50%;
+    background-color: red;
+    opacity: 0.26;
+    box-shadow: -2px 3px 10px -5px rgba(0,0,0,0.8);
+}
+
+.colorfulBubble:nth-child(1){
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 80px;
+    left: 40px;
+    background-color: #45a84a;
+    transition: all 3s ease-in-out;
+    animation-name: movebolls1;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-fill-mode: both;
+    animation-delay: 0ms;
+}
+
+.colorfulBubble:nth-child(2){
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    bottom: 80px;
+    right: 40px;
+    background-color: #e91e63;
+    transition: all 4s ease-in-out;
+    animation-name: movebolls2;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-fill-mode: both;
+    animation-delay: 2ms;
+}
+
+.colorfulBubble:nth-child(3){
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    bottom: 80px;
+    right: 50px;
+    background-color: #0d47a1;
+    transition: all 6s ease-in-out;
+    animation-name: movebolls3;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-fill-mode: both;
+    animation-delay: 4ms;
+}
+
+.colorfulBubble:nth-child(4){
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 70px;
+    left: 70px;
+    background-color: #42a5f5;
+    transition: all 2s ease-in-out;
+    animation-name: movebolls4;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-fill-mode: both;
+    animation-delay: 0ms;
+}
+
+.colorfulBubble:nth-child(5){
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    bottom: 80px;
+    left: 78px;
+    background-color: #5c6bc0;
+    transition: all 3s ease-in-out;
+    animation-name: movebolls6;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-fill-mode: both;
+    animation-delay: 0ms;
+}
+
+.colorfulBubble:nth-child(6){
+    position: absolute;
+    bottom: 30px;
+    left: 48px;
+    width: 80px;
+    height: 80px;
+    background-color: #e53935;
+    transition: all 5s ease-in-out;
+    animation-name: movebolls5;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-delay: 2ms;
+}
+
+.colorfulBubble:nth-child(7){
+    position: absolute;
+    top: 200px;
+    right: 140px;
+    width: 80px;
+    height: 80px;
+    background-color: #f0ec06;
+    transition: all 5s ease-in-out;
+    animation-name: movebolls7;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-delay: 0ms;
+}
+
+
+@keyframes movebolls1{
+    0%{
+        width: 100px;
+        height: 100px;
+        bottom: 70px;
+        left: 30px;
+    }
+
+    50%{
+        width: 80px;
+        height: 80px;
+        top: 90px;
+        bottom: 30px;
+    }
+
+    100%{
+        width: 40px;
+        height: 40px;
+        top: 50px;
+        right: 40px;
+    }
+}
+
+@keyframes movebolls2{
+    0%{
+        width: 100px;
+        height: 100px;
+        top: 50px;
+        right: 40px;
+    }
+
+    50%{
+        width: 80px;
+        height: 80px;
+        top: 90px;
+        right: 30px;
+    }
+
+    100%{
+        width: 40px;
+        height: 40px;
+        top: 50px;
+        right: 40px;
+    }
+}
+
+
+@keyframes movebolls3{
+    0%{
+        width: 100px;
+        height: 100px;
+        bottom: 80px;
+        right: 50px;
+    }
+
+    50%{
+        width: 80px;
+        height: 80px;
+        bottom: 90px;
+        right: 30px;
+    }
+
+    100%{
+        width: 40px;
+        height: 40px;
+        bottom: 50px;
+        right: 40px;
+    }
+}
+
+
+@keyframes movebolls4{
+    0%{
+        width: 100px;
+        height: 100px;
+        top: 50px;
+        right: 40px;
+    }
+
+    50%{
+        width: 80px;
+        height: 80px;
+        bottom: 30px;
+        right: 30px;
+    }
+
+    100%{
+        width: 40px;
+        height: 40px;
+        bottom: 50px;
+        right: 40px;
+    }
+}
+
+@keyframes movebolls5{
+    0%{
+        width: 100px;
+        height: 100px;
+        bottom: 50px;
+        right: 40px;
+    }
+
+    50%{
+        width: 80px;
+        height: 80px;
+        bottom: 100px;
+        right: 60px;
+    }
+
+    100%{
+        width: 60px;
+        height: 60px;
+        bottom: 80px;
+        right: 130px;
+    }
+}
+
+
+
+@keyframes movebolls6{
+    0%{
+        width: 100px;
+        height: 100px;
+        top: 200px;
+        right: 140px;
+    }
+
+    50%{
+        width: 80px;
+        height: 80px;
+        top: 140px;
+        right: 160px;
+    }
+
+    100%{
+        width: 60px;
+        height: 60px;
+        top: 120px;
+        right: 30px;
+    }
+}
+
+@keyframes movebolls7{
+    0%{
+        width: 100px;
+        height: 100px;
+        top: 100px;
+        right: 100px;
+    }
+
+    50%{
+        width: 80px;
+        height: 80px;
+        top: 140px;
+        right: 160px;
+    }
+
+    100%{
+        width: 60px;
+        height: 60px;
+        top: 160px;
+        right: 130px;
+    }
+}

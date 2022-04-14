@@ -10,30 +10,105 @@
                         <lightning-icon icon-name="utility:close" onclick={cancleLoginPopup}></lightning-icon>
                         <span class="slds-assistive-text" onclick={cancleLoginPopup}>Close</span>
                     </button>
-                    <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless"
+                    <div class="slds-modal__content slds-p-around_small slds-modal__content_headless"
                         id="modal-content-id-1">
                         <div class="loginBox">
+                            <span class="colorfulBubble"></span>
+                            <span class="colorfulBubble"></span>
+                            <span class="colorfulBubble"></span>
+                            <span class="colorfulBubble"></span>
+                            <span class="colorfulBubble"></span>
+                            <span class="colorfulBubble"></span>
+                            <span class="colorfulBubble"></span>
+
                             <div class="loginInnerBox">
                                 <div class="login">
-                                    <h1>Login</h1>
-                                    <template if:true={errorIdPass}>
-                                        <span class="userLoginError">Incorrect Email or Password</span>
+
+                                    <template if:true={loginBoxLayout}>
+                                        <h1>Login</h1>
+                                        <template if:true={errorIdPass}>
+                                            <span class="userLoginError">Incorrect Email or Password</span>
+                                        </template>
+
+                                        <div class="loginInput">
+                                            <div class="lgc-bg">
+                                                <lightning-input type="text" label="Email address/Phone"
+                                                    placeholder="enter email..." required onchange={chnageEmail}
+                                                    onfocus={focusFunction}></lightning-input>
+                                            </div>
+
+                                            <div class="lgc-bg">
+                                                <lightning-input type="password" label="Password"
+                                                    placeholder="enter password..." required onchange={chnagePassword}
+                                                    onfocus={focusFunction}></lightning-input>
+                                            </div>
+
+                                            <div class="loginBtn">
+                                                <button type="submit" onclick={loginUserFunction}>Sign In</button>
+                                            </div>
+                                        </div>
+                                        <div class="signupLinkBox">
+                                            <span>Don't Have Account ? <a href="#" onclick={loginSignupLayoutFun} data-acc="createAccount">Create Here</a></span>
+                                            <span>|</span>
+                                            <span> <a href="#"> Forgot Password?</a> </span>
+                                        </div>
                                     </template>
-                                    <div class="loginInput">
-                                        <div class="lgc-bg">
-                                            <lightning-input type="text" label="Email address/Phone"
-                                                placeholder="enter email..." required onchange={chnageEmail} onfocus={focusFunction}></lightning-input>
-                                        </div>
 
-                                        <div class="lgc-bg">
-                                            <lightning-input type="password" label="Password"
-                                                placeholder="enter password..." required onchange={chnagePassword} onfocus={focusFunction} ></lightning-input>
-                                        </div>
 
-                                        <div class="loginBtn" >
-                                            <button type="submit" onclick={loginUserFunction}>Login</button>
+                                    <!--  sign up  -->
+                                    <template if:true={signupBoxLayout}>
+                                        <h1>Create New Account</h1>
+                                        <template if:true={errorIdPass}>
+                                            <span class="userLoginError">Incorrect Email or Password</span>
+                                        </template>
+
+                                        <div class="loginInput">
+                                            <div class="lgc-bg">
+                                                <lightning-input type="text" label="Name"
+                                                    placeholder="enter name..." required onchange={chnageEmail}
+                                                    onfocus={focusFunction}></lightning-input>
+                                            </div>
+                                            <div class="lgc-bg">
+                                                <lightning-input type="text" label="Email address"
+                                                    placeholder="enter email..." required onchange={chnageEmail}
+                                                    onfocus={focusFunction}></lightning-input>
+                                            </div>
+
+                                            <div class="lgc-bg">
+                                                <lightning-input type="phone" label="Phone"
+                                                    placeholder="enter email..." required onchange={chnageEmail}
+                                                    onfocus={focusFunction}></lightning-input>
+                                            </div>
+
+                                            <div class="lgc-bg">
+                                                <lightning-input type="password" label="Password"
+                                                    placeholder="enter password..." required onchange={chnagePassword}
+                                                    onfocus={focusFunction}></lightning-input>
+                                            </div>
+                                            <div class="lgc-bg">
+                                                <lightning-input type="password" label="Confirm Password"
+                                                    placeholder="enter password again..." required onchange={chnagePassword}
+                                                    onfocus={focusFunction}></lightning-input>
+                                            </div>
+
+                                            <div class="lgc-bg">
+                                                <lightning-input type="text" label="Gender"
+                                                    placeholder="enter email..." required onchange={chnageEmail}
+                                                    onfocus={focusFunction}></lightning-input>
+                                            </div>
+
+                                            <div class="loginBtn">
+                                                <button type="submit" onclick={loginUserFunction}>Sign Up</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="signupLinkBox">
+                                            <span>Already Have Account? <a href="#" onclick={loginSignupLayoutFun} data-acc="loginAccount">Login</a></span>
+                                            <span>|</span>
+                                            <span> <a href="#"> Forgot Password?</a> </span>
+                                        </div>
+                                    </template>
+
+
                                 </div>
                             </div>
                         </div>
